@@ -183,7 +183,7 @@ def validate_project(sheet):
         if is_source_report(b, sheet) and (b.get('shot') or {}).get('remotion'):
             raise BuildError(f'{bid}: source reports cannot also be generated Remotion scenes')
     slug = (sheet.get('metadata') or {}).get('slug', 'reel')
-    if not isinstance(slug, str) or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*', slug):
+    if not isinstance(slug, str) or not re.fullmatch(r'[A-Za-z0-9_][A-Za-z0-9._-]*', slug):
         raise BuildError('metadata.slug must be a filename, not a path')
     default_voice(sheet)
 
